@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Controle ESP32</title>
+</head>
+<body>
+  <h1>Controle da Triagem</h1>
+
+  <button onclick="ligar()">Ligar LED</button>
+  <button onclick="desligar()">Desligar LED</button>
+
+  <script>
+    const ip = "http://192.168.68.109"; // Troque para o IP do seu ESP32
+
+    function ligar() {
+      fetch(ip + "/start")
+        .then(response => {
+          if (response.ok) {
+            alert("LED ligado!");
+          } else {
+            alert("Erro ao ligar.");
+          }
+        })
+    }
+
+    function desligar() {
+      fetch(ip + "/stop")
+        .then(response => {
+          if (response.ok) {
+            alert("LED desligado!");
+          } else {
+            alert("Erro ao desligar.");
+          }
+        })
+    }
+  </script>
+</body>
+</html>
